@@ -5,17 +5,17 @@ module.exports = defineConfig({
     testDir: './tests',
 
     use: {
-        headless: true,             // show the browser UI
-        viewport: null,              // disable fixed viewport (for full window)
+        headless: false,
+        viewport: null,
         launchOptions: {
             args: [
-                '--start-maximized', // maximize browser window
-                '--window-size=1920,1080' // fallback in case maximize doesn’t work
+                '--start-maximized',
+                '--window-size=1920,1080'
             ],
-            slowMo: 300,             // 🐢 slow down execution (300ms between actions)
+            slowMo: 300,
         },
-        screenshot: 'on',            // capture screenshots for all tests
-        video: 'on',                 // record video for all tests
+        screenshot: 'on',
+        video: 'on',
     },
 
     projects: [

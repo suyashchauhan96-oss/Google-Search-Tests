@@ -22,10 +22,20 @@ test.describe('Google Search Autocomplete Tests', () => {
             searchBox.click();
             await searchBox.fill(phrase);
 
-            // Wait for autocomplete suggestions to appear
+            // Wait for Phrase suggestions to appear
             const suggestions = page.locator('ul[role="listbox"] li span');
             await suggestions.first().waitFor({ timeout: 10000 });
             await expect(suggestions.first()).toBeVisible();
+
+            // Define screenshot path
+            const screenshotPath = `screenshots/${phrase.replace(/\s+/g, '_')}.png`;
+
+            // Capture screenshot (save locally + attach to HTML report)
+            const screenshot = await page.screenshot({ path: screenshotPath, fullPage: true });
+            await test.info().attach(`Screenshot - ${phrase}`, {
+                body: screenshot,
+                contentType: 'image/png',
+            });
 
             // Validate that at least one suggestion contains the typed phrase
             const allSuggestions = await suggestions.allTextContents();
