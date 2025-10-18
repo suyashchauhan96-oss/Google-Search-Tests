@@ -1,0 +1,11 @@
+{
+  "name": "google-search-tests",
+  "version": "1.0.0",
+  "description": "Playwright test suite for Google search automation",
+  "scripts": {
+    "test": "npx playwright test --reporter=html"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
+  }
+}
