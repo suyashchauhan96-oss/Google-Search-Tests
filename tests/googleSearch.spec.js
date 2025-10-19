@@ -3,15 +3,15 @@ const { test, expect } = require('@playwright/test');
 // Array of search phrases
 const searchPhrases = ['Valletta', 'The Multiple', 'Ftira'];
 
-test.describe('Google Search Autocomplete Tests', () => {
+test.describe('Google Page for Searching Three Phrases', () => {
 
     for (const phrase of searchPhrases) {
-        test(`Check autocomplete for "${phrase}"`, async ({ page }) => {
+        test(`Verify Google Search Results for "${phrase}"`, async ({ page }) => {
 
             // Go to Google
             await page.goto('https://www.google.com');
 
-            // Accept cookies if prompt appears (Google EU users)
+            // Accept cookies if prompt appears
             const acceptButton = page.locator('button:has-text("I agree")');
             if (await acceptButton.isVisible()) {
                 await acceptButton.click();
